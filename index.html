@@ -1,0 +1,1170 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>제주 감귤 직거래 · 산지 직송</title>
+  <meta name="description" content="제주 농가가 직접 재배한 감귤을 산지 직송으로 만나보세요." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css" />
+  <style>
+/* =========================================================================
+   제주 감귤 주문 서비스 - 스타일시트
+   weniv 디자인 시스템(다크 + 블루 + 라운드) 기반
+   ========================================================================= */
+
+:root {
+  /* Font */
+  --pretendard: "Pretendard", -apple-system, "Apple SD Gothic Neo", sans-serif;
+
+  /* Background / Brand */
+  --background: #1f2123;
+  --primary: #3075ff;
+  --primary-lighten: #2e6ff2;
+  --primary-darken: #145df0;
+  --primary-text: #ffffff;
+  --primary-a11y: #2861d2;
+
+  /* Surface */
+  --surface: #ffffff;
+  --surface-lighten: #f5f8ff;
+  --surface-darken: #e5edff;
+  --surface-text: #121314;
+  --activation: #2b3444;
+
+  /* Gray */
+  --grayLv1: #121314;
+  --grayLv2: #595f66;
+  --grayLv3: #8d9299;
+  --grayLv4: #f3f5fa;
+
+  /* Semantic */
+  --error: #fc7377;
+  --warn: #ffe187;
+  --warn-text: #121314;
+  --success: #50c140;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 18px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+
+  /* Effect */
+  --effect-shadow: 0px 8px 12px 0px hsla(0, 0%, 7%, 0.2),
+    0px 8px 12px 0px hsla(0, 0%, 7%, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--pretendard);
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--background);
+  color: var(--primary-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* 접근성: 시각적으로 숨기되 스크린리더에는 읽히도록 */
+.a11y-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----- 레이아웃 컨테이너 ----- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main.container {
+  flex: 1;
+  margin-top: 40px;
+  margin-bottom: 120px;
+}
+
+.section-title {
+  font-size: 25.6px;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.page-subtitle {
+  color: var(--grayLv3);
+  margin: 0 0 32px;
+}
+
+/* ----- 헤더 / 네비게이션 ----- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(31, 33, 35, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--activation);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 68px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.logo .logo-emoji {
+  font-size: 26px;
+}
+
+.logo .logo-accent {
+  color: var(--primary);
+}
+
+.gnb {
+  display: flex;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.gnb a {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  color: var(--grayLv3);
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.gnb a:hover {
+  background: var(--activation);
+  color: var(--primary-text);
+}
+
+.gnb a.active {
+  color: var(--primary-text);
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-user {
+  color: var(--grayLv3);
+  font-size: 14px;
+}
+
+.header-user strong {
+  color: var(--primary-text);
+}
+
+/* ----- 버튼 ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  font-family: var(--pretendard);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-text);
+}
+.btn-primary:hover {
+  background: var(--primary-lighten);
+}
+.btn-primary:active {
+  background: var(--primary-darken);
+}
+
+.btn-ghost {
+  background: var(--activation);
+  color: var(--primary-text);
+}
+.btn-ghost:hover {
+  background: #354056;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-text);
+  border: 1px solid var(--grayLv2);
+}
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+.btn-danger:hover {
+  background: var(--error);
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-lg {
+  padding: 16px 28px;
+  font-size: 18px;
+}
+
+/* ----- 배너 (메인) ----- */
+.hero {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: linear-gradient(120deg, #17408b 0%, #3075ff 55%, #ffa52a 140%);
+  padding: 64px 48px;
+  margin-bottom: 64px;
+  box-shadow: var(--effect-shadow);
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+
+.hero p {
+  font-size: 18px;
+  margin: 0 0 32px;
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hero .badge-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.hero .badge {
+  background: rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ----- 상품 카드 그리드 ----- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--surface);
+  color: var(--surface-text);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--effect-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card__thumb {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  background: var(--surface-darken);
+}
+
+.product-card__thumb.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+}
+
+.product-card__body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.product-card__name {
+  font-size: 18.72px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.product-card__weight {
+  font-size: 14px;
+  color: var(--grayLv2);
+}
+
+.product-card__price {
+  margin-top: auto;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-a11y);
+}
+
+.product-card__price span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--grayLv2);
+}
+
+/* ----- 상품 상세 ----- */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.detail-image {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--surface-darken);
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--effect-shadow);
+}
+
+.detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-image.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 120px;
+}
+
+.detail-info h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.detail-weight {
+  color: var(--grayLv3);
+  margin-bottom: 20px;
+}
+
+.detail-price {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+.detail-desc {
+  background: var(--activation);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  color: #d7dbe0;
+  white-space: pre-line;
+  margin-bottom: 28px;
+}
+
+/* 수량 선택기 */
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--grayLv2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.qty-control button {
+  width: 44px;
+  height: 44px;
+  background: var(--activation);
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.qty-control button:hover {
+  background: #354056;
+}
+
+.qty-control input {
+  width: 56px;
+  height: 44px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  -moz-appearance: textfield;
+}
+
+.qty-control input::-webkit-outer-spin-button,
+.qty-control input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.detail-total {
+  font-size: 16px;
+  color: var(--grayLv3);
+  margin-bottom: 20px;
+}
+.detail-total strong {
+  font-size: 22px;
+  color: var(--primary-text);
+}
+
+/* ----- 폼(로그인/회원가입/주문/글쓰기) ----- */
+.form-card {
+  background: var(--activation);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow: var(--effect-shadow);
+}
+
+.auth-wrap {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #d7dbe0;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid #3a4456;
+  background: #171a1d;
+  color: #fff;
+  font-family: var(--pretendard);
+  font-size: 16px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group .helptext {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--grayLv3);
+}
+
+.form-group .errorlist {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  color: var(--error);
+  font-size: 13px;
+}
+
+.form-error-summary {
+  background: rgba(252, 115, 119, 0.12);
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form-footer {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--grayLv3);
+  font-size: 14px;
+}
+
+.form-footer a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ----- 주문 요약 ----- */
+.order-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+}
+
+.order-summary {
+  background: var(--activation);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--effect-shadow);
+  position: sticky;
+  top: 88px;
+}
+
+.order-summary h2 {
+  font-size: 18px;
+  margin: 0 0 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #3a4456;
+  font-size: 15px;
+}
+
+.summary-row.total {
+  border-bottom: none;
+  border-top: 2px solid #3a4456;
+  margin-top: 8px;
+  padding-top: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.summary-row.total .amount {
+  color: var(--primary);
+}
+
+/* ----- 게시판 ----- */
+.board-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.category-tabs a {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--activation);
+  color: var(--grayLv3);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.category-tabs a.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.board-toolbar .spacer {
+  margin-left: auto;
+}
+
+.post-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.post-table th,
+.post-table td {
+  padding: 16px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--activation);
+}
+
+.post-table th {
+  color: var(--grayLv3);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.post-table tr:hover td {
+  background: rgba(43, 52, 68, 0.4);
+}
+
+.post-table .col-title {
+  font-weight: 600;
+}
+
+.post-table .col-title a:hover {
+  color: var(--primary);
+}
+
+.cat-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.cat-badge.review {
+  background: rgba(80, 193, 64, 0.16);
+  color: var(--success);
+}
+
+.cat-badge.qna {
+  background: rgba(48, 117, 255, 0.16);
+  color: #7ba7ff;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--grayLv3);
+}
+
+.empty-state .emoji {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+/* 페이지네이션 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 32px;
+}
+
+.pagination a,
+.pagination span {
+  min-width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--grayLv3);
+  font-weight: 400;
+  padding: 0 10px;
+}
+
+.pagination .page-number.is-active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.pagination .page-prevnext {
+  background: var(--grayLv1);
+  color: #fff;
+}
+
+.pagination .page-prevnext:hover {
+  background: #2a2c2f;
+}
+
+/* ----- 게시글 상세 ----- */
+.post-detail-header {
+  border-bottom: 1px solid var(--activation);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.post-detail-header h1 {
+  font-size: 26px;
+  margin: 12px 0 12px;
+}
+
+.post-meta {
+  display: flex;
+  gap: 16px;
+  color: var(--grayLv3);
+  font-size: 14px;
+}
+
+.post-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #e4e7ea;
+  white-space: pre-line;
+  min-height: 120px;
+  margin-bottom: 24px;
+}
+
+.post-content img {
+  border-radius: var(--radius-lg);
+  margin: 16px 0;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--activation);
+  margin-bottom: 32px;
+}
+
+/* 댓글 */
+.comment-section h2 {
+  font-size: 18px;
+  margin: 0 0 20px;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.comment-item {
+  background: var(--activation);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
+
+.comment-item__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.comment-item__author {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.comment-item__date {
+  color: var(--grayLv3);
+  font-size: 13px;
+}
+
+.comment-item__body {
+  color: #e4e7ea;
+  white-space: pre-line;
+}
+
+.comment-item__delete {
+  background: none;
+  border: none;
+  color: var(--grayLv3);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+.comment-item__delete:hover {
+  color: var(--error);
+}
+
+/* ----- 주문 내역 ----- */
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-item {
+  background: var(--activation);
+  border-radius: var(--radius-xl);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-item__thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  background: var(--surface-darken);
+  flex-shrink: 0;
+}
+
+.order-item__info {
+  flex: 1;
+}
+
+.order-item__info h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+}
+
+.order-item__meta {
+  color: var(--grayLv3);
+  font-size: 14px;
+}
+
+.order-item__right {
+  text-align: right;
+}
+
+.order-item__amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(48, 117, 255, 0.16);
+  color: #7ba7ff;
+  margin-bottom: 6px;
+}
+
+.status-badge.done {
+  background: rgba(80, 193, 64, 0.16);
+  color: var(--success);
+}
+.status-badge.canceled {
+  background: rgba(252, 115, 119, 0.16);
+  color: var(--error);
+}
+
+/* ----- 알림 메시지 ----- */
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.messages li {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.messages li.success {
+  background: rgba(80, 193, 64, 0.14);
+  color: #86e07a;
+  border: 1px solid rgba(80, 193, 64, 0.4);
+}
+.messages li.info {
+  background: rgba(48, 117, 255, 0.14);
+  color: #7ba7ff;
+  border: 1px solid rgba(48, 117, 255, 0.4);
+}
+.messages li.warning {
+  background: rgba(255, 225, 135, 0.14);
+  color: var(--warn);
+  border: 1px solid rgba(255, 225, 135, 0.4);
+}
+.messages li.error {
+  background: rgba(252, 115, 119, 0.14);
+  color: var(--error);
+  border: 1px solid rgba(252, 115, 119, 0.4);
+}
+
+/* ----- 푸터 ----- */
+.site-footer {
+  border-top: 1px solid var(--activation);
+  padding: 32px 0;
+  color: var(--grayLv3);
+  font-size: 14px;
+}
+
+.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-contact {
+  color: var(--grayLv3);
+}
+
+/* 전자상거래법 판매자(사업자) 정보 */
+.biz-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0;
+  padding: 16px 0;
+  border-top: 1px solid var(--activation);
+  border-bottom: 1px solid var(--activation);
+}
+
+.biz-info > div {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.biz-info dt {
+  color: var(--grayLv3);
+}
+
+.biz-info dd {
+  margin: 0;
+  color: #c3c7cc;
+}
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--grayLv3);
+}
+
+/* ----- 반응형 ----- */
+@media (max-width: 900px) {
+  .detail-grid,
+  .order-layout {
+    grid-template-columns: 1fr;
+  }
+  .order-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header .container {
+    gap: 10px;
+  }
+  .gnb {
+    gap: 2px;
+    margin-left: 0;
+  }
+  .gnb a {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  .header-user {
+    display: none;
+  }
+  .hero {
+    padding: 40px 24px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .post-table .col-author,
+  .post-table .col-date {
+    display: none;
+  }
+}
+
+</style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="http://127.0.0.1:8000/" class="logo">
+        <span class="logo-emoji" aria-hidden="true">🍊</span>
+        <span>제주<span class="logo-accent">감귤</span></span>
+      </a>
+      <nav class="gnb" aria-label="주요 메뉴">
+        <a href="http://127.0.0.1:8000/products/" class="">상품</a>
+        <a href="http://127.0.0.1:8000/board/" class="">게시판</a>
+        
+      </nav>
+      <div class="header-right">
+        
+          <a href="http://127.0.0.1:8000/accounts/login/" class="btn btn-outline btn-sm">로그인</a>
+          <a href="http://127.0.0.1:8000/accounts/signup/" class="btn btn-primary btn-sm">회원가입</a>
+        
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+
+    
+<section class="hero">
+  <div class="badge-row">
+    <span class="badge">🚜 산지 직송</span>
+    <span class="badge">⚡ 간편 주문</span>
+    <span class="badge">⭐ 믿을 수 있는 후기</span>
+  </div>
+  <h1>제주 농가가 키운 감귤,<br />중간 유통 없이 바로 받아보세요.</h1>
+  <p>따사로운 제주 햇살을 머금은 제철 감귤을 산지에서 곧장 배송합니다.
+    부모님 선물부터 우리 가족 정기 간식까지, 지금 주문하세요.</p>
+  <a href="http://127.0.0.1:8000/products/" class="btn btn-primary btn-lg">감귤 상품 보러가기</a>
+</section>
+
+<section>
+  <div class="board-toolbar">
+    <h2 class="section-title" style="margin:0">추천 감귤 상품</h2>
+    <a href="http://127.0.0.1:8000/products/" class="spacer btn btn-outline btn-sm">전체 보기</a>
+  </div>
+
+  
+    <div class="product-grid">
+      
+        
+
+<a href="http://127.0.0.1:8000/products/3/" class="product-card">
+  
+    <div class="product-card__thumb placeholder" aria-hidden="true">🍊</div>
+  
+  <div class="product-card__body">
+    <h3 class="product-card__name">제주 한라봉</h3>
+    <span class="product-card__weight">3kg (9~12과)</span>
+    <div class="product-card__price">34,900원 <span>부터</span></div>
+  </div>
+</a>
+
+      
+        
+
+<a href="http://127.0.0.1:8000/products/2/" class="product-card">
+  
+    <div class="product-card__thumb placeholder" aria-hidden="true">🍊</div>
+  
+  <div class="product-card__body">
+    <h3 class="product-card__name">프리미엄 하우스 감귤</h3>
+    <span class="product-card__weight">3kg (약 25~30과)</span>
+    <div class="product-card__price">29,900원 <span>부터</span></div>
+  </div>
+</a>
+
+      
+        
+
+<a href="http://127.0.0.1:8000/products/1/" class="product-card">
+  
+    <div class="product-card__thumb placeholder" aria-hidden="true">🍊</div>
+  
+  <div class="product-card__body">
+    <h3 class="product-card__name">제주 노지 감귤</h3>
+    <span class="product-card__weight">5kg (약 40~55과)</span>
+    <div class="product-card__price">19,900원 <span>부터</span></div>
+  </div>
+</a>
+
+      
+    </div>
+  
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <span>🍊 제주 감귤 직거래 · 산지 직송</span>
+        <span class="footer-contact">고객문의 [064-000-0000] · [help@example.com]</span>
+      </div>
+
+      
+      <dl class="biz-info">
+        <div><dt>상호</dt><dd>[제주감귤농장]</dd></div>
+        <div><dt>대표자</dt><dd>[홍길동]</dd></div>
+        <div><dt>사업자등록번호</dt><dd>[000-00-00000]</dd></div>
+        <div><dt>통신판매업신고</dt><dd>[2026-제주OO-0000]</dd></div>
+        <div><dt>주소</dt><dd>[제주특별자치도 제주시 OO로 00]</dd></div>
+        <div><dt>개인정보관리책임자</dt><dd>[홍길동]</dd></div>
+      </dl>
+
+      <span class="footer-copy">© 2026 Jeju Mandarin. MVP 데모 서비스입니다. (사업자 정보는 예시이며, 실제 운영 전 반드시 교체하세요.)</span>
+    </div>
+  </footer>
+</body>
+</html>
